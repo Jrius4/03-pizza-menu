@@ -1,7 +1,7 @@
 import React, { StrictMode, useState, useEffect } from 'react';
 import ReactDom from 'react-dom/client';
-import pizzaData from "./data"
-import "./input.css"
+import pizzaData from "./data";
+import "./input.css";
 
 
 const App = () => {
