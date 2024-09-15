@@ -22,8 +22,14 @@ function Header() {
 
 function Menu() {
     return <div className='flex flex-col justify-center items-center gap-[20px]'>
-        <h4 className='text-xl text-gray-600 font-medium'>Our Menu</h4>
-        <Pizza />
+        <h4 className='text-xl text-gray-600 font-medium border-t-4 border-b-4 border-gray-600 ' style={{ textTransform: 'uppercase' }}>Our Menu</h4>
+        <div>
+            {pizzaData.map(pizza => (
+                <Pizza pizza={pizza} />
+            ))}
+
+        </div>
+
     </div>
 }
 
@@ -46,22 +52,20 @@ function Footer() {
     </footer>
 }
 
-function Pizza() {
-    return <div>
-        {pizzaData.map(pizza => (
-            <div key={pizza.id} className='flex justify-start  gap-[20px] grid-cols-3 mb-[20px]'>
-                <div>
-                    <img width={150} height={75} src={pizza.imageUrl} alt={pizza.name} />
-                </div>
+function Pizza({ pizza }) {
+    return <div key={pizza.id} className='flex justify-start  gap-[20px] grid-cols-3 mb-[20px]'>
+        <div>
+            <img className='rounded-tl-3xl rounded-br-3xl shadow-lg shadow-gray-500' width={150} height={75} src={pizza.imageUrl} alt={pizza.name} />
+        </div>
 
-                <div>
-                    <h2>{pizza.name}</h2>
-                    <p>{pizza.description}</p>
-                    <p>Price: ${pizza.price}</p>
-                </div>
-            </div>
-        ))}
+        <div>
+            <h2 className="font-semibold border-b-2 border-orange-500 ">{pizza.name}</h2>
+            <p>{pizza.description}</p>
+            <p >Price: <span className='text-3xl'>${pizza.price} </span></p>
+        </div>
     </div>
+
+
 
 }
 const root = ReactDom.createRoot(document.getElementById('root'));
